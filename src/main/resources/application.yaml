@@ -1,7 +1,16 @@
 spring:
   application:
     name: ai-agent
-
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+      timeout: 120s
+      max-retries: 0
+      chat:
+        model: ${OPENAI_MODEL:gpt-6-luna}
+        reasoning-effort: ${OPENAI_REASONING_EFFORT:none}
+        max-completion-tokens: ${OPENAI_MAX_COMPLETION_TOKENS:8192}
 springdoc:
   api-docs:
     enabled: true
@@ -12,3 +21,12 @@ springdoc:
     path: /swagger-ui.html
 
   packages-to-scan: com.lcq.aiagent
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor:
+                SimpleLoggerAdvisor: debug

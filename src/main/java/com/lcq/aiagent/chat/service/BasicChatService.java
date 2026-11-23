@@ -1,4 +1,6 @@
 package com.lcq.aiagent.chat.service;
 
-public class BasicChatService {
+public interface BasicChatService {
+
+    public
 }
