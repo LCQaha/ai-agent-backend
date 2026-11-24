@@ -1,4 +1,4 @@
-package com.lcq.aiagent.chat.dto;
+package com.lcq.aiagent.chat.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

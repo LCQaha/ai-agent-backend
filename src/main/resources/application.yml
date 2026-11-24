@@ -1,16 +1,25 @@
+server:
+  port: ${SERVER_PORT:8080}
+
 spring:
   application:
     name: ai-agent
+  # Spring AI Starter 分别装配 ChatModel 和 EmbeddingModel。
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
       base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
-      timeout: 120s
-      max-retries: 0
+      timeout: ${AI_REQUEST_TIMEOUT:120s}
+      max-retries: ${AI_MAX_RETRIES:0}
       chat:
         model: ${OPENAI_MODEL:gpt-6-luna}
         reasoning-effort: ${OPENAI_REASONING_EFFORT:none}
         max-completion-tokens: ${OPENAI_MAX_COMPLETION_TOKENS:8192}
+      embedding:
+        model: ${OPENAI_EMBEDDING_MODEL:text-embedding-ada-002}
+        base-url: ${OPENAI_EMBEDDING_BASE_URL:${spring.ai.openai.base-url}}
+        api-key: ${OPENAI_EMBEDDING_API_KEY:${spring.ai.openai.api-key}}
+
 springdoc:
   api-docs:
     enabled: true
@@ -30,3 +39,8 @@ logging:
             client:
               advisor:
                 SimpleLoggerAdvisor: debug
+
+
+app:
+  prompts:
+    base01: "${LOVE_SYSTEM_PROMPT_LOCATION:classpath:/prompts/base01.txt}"

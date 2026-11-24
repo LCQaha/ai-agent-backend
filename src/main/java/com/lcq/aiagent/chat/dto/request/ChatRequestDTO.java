@@ -1,4 +1,4 @@
-package com.lcq.aiagent.chat.dto;
+package com.lcq.aiagent.chat.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
