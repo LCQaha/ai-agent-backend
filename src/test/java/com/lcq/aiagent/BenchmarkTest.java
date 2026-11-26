@@ -13,6 +13,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * 导入模型环境变量后，使用 {@code ./mvnw -Dtest=BenchmarkTest test} 运行真实模型验收。
+ * 可用 {@code -Dbenchmark.message=问题} 指定单个问题。
+ */
 @SpringBootTest
 public class BenchmarkTest {
 

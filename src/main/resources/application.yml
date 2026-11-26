@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ai-agent
+  profiles:
+    default: prod
   # Spring AI Starter 分别装配 ChatModel 和 EmbeddingModel。
   ai:
     openai:
@@ -42,5 +44,13 @@ logging:
 
 
 app:
+  ai:
+    session:
+      # 自定义 Profile 未配置清理间隔时沿用此值。
+      cleanup-interval: ${AI_SESSION_CLEANUP_INTERVAL:10m}
+    memory:
+      trigger-turns: ${AI_MEMORY_TRIGGER_TURNS:20}
+      keep-turns: ${AI_MEMORY_KEEP_TURNS:10}
   prompts:
     base01: "${LOVE_SYSTEM_PROMPT_LOCATION:classpath:/prompts/base01.txt}"
+    first-app: "${FIRST_APP_SYSTEM_PROMPT_LOCATION:classpath:/prompts/first-app.txt}"

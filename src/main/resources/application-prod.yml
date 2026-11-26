@@ -1,0 +1,4 @@
+app:
+  ai:
+    session:
+      cleanup-interval: ${AI_SESSION_CLEANUP_INTERVAL:10m}
